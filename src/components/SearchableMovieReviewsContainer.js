@@ -28,13 +28,14 @@ class SearchableMovieReviewsContainer extends Component {
 
     fetch(SEARCH_URL)
       .then(function(response) {
+        debugger
         if (response.status >= 400) {
           throw new Error("Bad response from server");
         }
         return response.json();
-      }).then(reviews => {
+      }).then(data => {
         this.setState({
-          reviews: reviews
+          reviews: data.results
         });
 	    });
   }
