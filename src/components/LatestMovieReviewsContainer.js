@@ -10,6 +10,10 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
 
 class LatestMovieReviewsContainer extends Component {
 
+  state = {
+    movies: []
+  }
+
   render() {
     return (
       <div>
@@ -17,6 +21,18 @@ class LatestMovieReviewsContainer extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=ZAKLHDCpHwELxnf94wxbpQ3lLWev8wcm`)
+    .then(res => res.json())
+    .then(json => {
+      // debugger
+      this.setState({
+        movies: json.results
+      })
+    })
+  }
+
 
 }
 
