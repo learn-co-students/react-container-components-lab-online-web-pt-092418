@@ -11,13 +11,13 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
 class LatestMovieReviewsContainer extends Component {
 
   state = {
-    movies: []
+    reviews: []
   }
 
   render() {
     return (
       <div>
-        <MovieReviews />
+        <MovieReviews reviews={this.state.reviews} />
       </div>
     );
   }
@@ -28,7 +28,7 @@ class LatestMovieReviewsContainer extends Component {
     .then(json => {
       // debugger
       this.setState({
-        movies: json.results
+        reviews: json.results
       })
     })
   }
