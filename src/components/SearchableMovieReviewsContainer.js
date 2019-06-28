@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'isomorphic-fetch';
-import MovieReviews from './MovieReviews'
+// import MovieReviews from './MovieReviews'
 
 const NYT_API_KEY = 'f98593a095b44546bf4073744b540da0';
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
@@ -10,14 +10,20 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
 
 class SearchableMovieReviewsContainer extends Component {
 
+  state = {
+    reviews: [],
+    searchTerm: ''
+  }
+
   render() {
     return (
-      <div>
-        <MovieReviews />
+      <div className="searchable-movie-reviews">
+        <MovieReviews reviews={this.state.reviews} />
       </div>
     );
   }
 
+  // <MovieReviews />
 }
 
 export default SearchableMovieReviewsContainer;
