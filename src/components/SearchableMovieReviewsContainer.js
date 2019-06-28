@@ -18,9 +18,10 @@ class SearchableMovieReviewsContainer extends Component {
   render() {
     return (
       <div className="searchable-movie-reviews">
-        <form>
-          <input type="text"></input>
-          <input type="submit"></input>
+
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.searchTerm} onChange={this.handleChange}></input>
+          <input type="submit" ></input>
 
         </form>
         <MovieReviews reviews={this.state.reviews} />
@@ -28,15 +29,27 @@ class SearchableMovieReviewsContainer extends Component {
     );
   }
 
-  componentDidMount() {
-    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${this.state.searchTerm}?api-key=ZAKLHDCpHwELxnf94wxbpQ3lLWev8wcm`)
+  handleChange = (e) => {
+    this.setState({
+      searchTerm: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${this.state.searchTerm}?api-key=my key`)
     .then(res => res.json)
     .then(json => {
-      setState:({
+      this.setState({
         reviews: json.results
       })
     })
+
   }
-}
+
+  componentDidMount() {
+  }
+
+} // end of class
 
 export default SearchableMovieReviewsContainer;

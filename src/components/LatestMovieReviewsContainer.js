@@ -18,7 +18,7 @@ class LatestMovieReviewsContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=ZAKLHDCpHwELxnf94wxbpQ3lLWev8wcm`)
+    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=my key`)
     .then(res => res.json())
     .then(json => {
       // debugger
